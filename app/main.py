@@ -6,12 +6,15 @@ class Animal:
 
     def __init__(
         self,
-        name: str
+        name: str,
+        health: int = 100
     ) -> None:
         self.name = name
-        self._health = 100
+        self._health = health
         self.hidden = False
         Animal.alive.append(self)
+        if self._health <= 0:
+            Animal.alive.remove(self)
 
     @property
     def health(self) -> int:
